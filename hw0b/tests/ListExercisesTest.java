@@ -29,10 +29,14 @@ public class ListExercisesTest {
     public void testEvens() {
         List<Integer> lst = List.of(1, 2, 3, 4, 5, 6);
         List<Integer> lstExpected = List.of(2, 4, 6);
+        List<Integer> lst1 = List.of(1);
+        List<Integer> lstExpected1 = List.of();
 
         List<Integer> res = ListExercises.evens(lst);
+        List<Integer> res1 = ListExercises.evens(lst1);
 
         assertThat(res).isEqualTo(lstExpected);
+        assertThat(res1).isEqualTo(lstExpected1);
     }
 
     @Test
