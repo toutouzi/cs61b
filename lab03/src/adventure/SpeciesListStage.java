@@ -71,12 +71,15 @@ public class SpeciesListStage implements AdventureStage {
         while (true) {
             String input = in.readLine();
             List<String> user;
+            double similarity;
             if (input.isEmpty()) {
                 user = new ArrayList<>();
+                similarity = 0;
             } else {
                 user = Arrays.asList(input.toLowerCase().split(" *, *"));
+                similarity = arraySimilarity(reference, user);
             }
-            double similarity = arraySimilarity(reference, user);
+            // double similarity = arraySimilarity(reference, user);
             if (similarity != 1 && reference.size() != 0) {
                 long numCorrect = Math.round(similarity * reference.size());
                 System.out.println("Try again! You got " + numCorrect + " animals correct!");
