@@ -1,3 +1,4 @@
+import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -23,6 +24,37 @@ public class TestBSTMapExtra {
         Set<String> keySet = b.keySet();
         assertThat(values).containsExactlyElementsIn(keySet).inOrder();
         assertThat(keySet).containsExactlyElementsIn(values).inOrder();
+    }
+
+    @Test
+    public void iteratorTest() {
+        BSTMap<String, Integer> b = new BSTMap<>();
+        TreeSet<String> values = new TreeSet<>();
+        for (int i = 0; i < 455; i++) {
+            b.put("hi" + i, 1);
+            values.add("hi" + i);
+        }
+        assertThat(b.size()).isEqualTo(455); //keys are there
+        Set<String> keySet = b.keySet();
+        Iterator<String> iter1 = keySet.iterator();
+        Iterator<String> iter = values.iterator();
+        for (String k : b) {
+            assertThat(k).isEqualTo(iter.next());
+            assertThat(k).isEqualTo(iter1.next());
+        }
+    }
+    @Test
+    public void MyKeySetTest() {
+        BSTMap<Integer, Integer> b = new BSTMap<>();
+        TreeSet<Integer> values = new TreeSet<>();
+        for (int i = 0; i < 455; i++) {
+            b.put(454 - i, 1);
+            values.add(i);
+        }
+        assertThat(b.size()).isEqualTo(455); //keys are there
+        Set<Integer> keySet = b.keySet();
+        assertThat(values).containsExactlyElementsIn(keySet);
+        assertThat(keySet).containsExactlyElementsIn(values);
     }
 
     /* Remove Test
