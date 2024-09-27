@@ -81,8 +81,9 @@ public class PercolationTest {
     // TODO: Using the given tests above as a template,
     //       write some more tests and delete the fail() line
     @Test
-    public void yourFirstTestHere() {
-        fail("Did you write your own tests?");
+    public void constructorTest() {
+        Percolation p = new Percolation(4);
+//        assertThat(p.board[3][2]).isFalse();
     }
 
 }
